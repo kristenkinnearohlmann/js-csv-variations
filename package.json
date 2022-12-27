@@ -1,0 +1,19 @@
+{
+  "name": "js-csv-variations",
+  "version": "1.0.0",
+  "description": "<https://blog.logrocket.com/complete-guide-csv-files-node-js/>",
+  "main": "csv-fs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristenkinnearohlmann/js-csv-variations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristenkinnearohlmann/js-csv-variations/issues"
+  },
+  "homepage": "https://github.com/kristenkinnearohlmann/js-csv-variations#readme"
+}
