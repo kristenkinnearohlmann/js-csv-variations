@@ -1,13 +1,18 @@
-console.log("Hello world");
-
 const btnInput = document.getElementById("btnInput");
 btnInput.addEventListener("click", (event) => {
-  console.log("In button click");
-  handleSelectedFile();
+  const selectedFile = getFileSelection();
+
+  selectedFile ? handleFileSelected(selectedFile) : handleNoFileSelected();
 });
 
-const handleSelectedFile = () => {
-  const selectedFile = document.getElementById("fileItem").files[0];
+const getFileSelection = () => {
+  return document.getElementById("fileItem").files[0];
+};
+
+const handleFileSelected = (selectedFile) => {
   console.log(selectedFile);
-  console.log("File retrieved");
+};
+
+const handleNoFileSelected = () => {
+  console.log("No file selected");
 };
