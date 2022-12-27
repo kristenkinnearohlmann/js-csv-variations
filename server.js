@@ -2,10 +2,12 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
-app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: __dirname });
-});
+app.use(express.static("src"));
 
 app.listen(port, () => {
   console.log(`Now listening on port ${port}`);
+});
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
