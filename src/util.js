@@ -1,4 +1,17 @@
+const btnSelect = document.getElementById("btnSelect");
 const btnInput = document.getElementById("btnInput");
+const fileItem = document.getElementById("fileItem");
+
+btnSelect.addEventListener(
+  "click",
+  (event) => {
+    if (fileItem) {
+      fileItem.click();
+    }
+  },
+  false
+);
+
 btnInput.addEventListener("click", (event) => {
   const selectedFile = getFileSelection();
 
@@ -6,7 +19,8 @@ btnInput.addEventListener("click", (event) => {
 });
 
 const getFileSelection = () => {
-  return document.getElementById("fileItem").files[0];
+  //   return document.getElementById("fileItem").files[0];
+  return fileItem.files[0];
 };
 
 const handleFileSelected = (selectedFile) => {
