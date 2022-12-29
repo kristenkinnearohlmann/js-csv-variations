@@ -12,8 +12,10 @@ btnSelect.addEventListener(
   false
 );
 
-fileItem.addEventListener("click", () => {
-  console.log("The file item was clicked");
+fileItem.addEventListener("change", () => {
+  console.log("The thing changed");
+  console.log(fileItem.files[0].name);
+  document.getElementById("fileNameDisplay").value = fileItem.files[0].name;
 });
 
 btnInput.addEventListener("click", (event) => {
