@@ -12,6 +12,10 @@ btnSelect.addEventListener(
   false
 );
 
+fileItem.addEventListener("click", () => {
+  console.log("The file item was clicked");
+});
+
 btnInput.addEventListener("click", (event) => {
   const selectedFile = getFileSelection();
 
