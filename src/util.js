@@ -11,7 +11,8 @@ btnSelect.addEventListener(
   },
   false
 );
-
+// TODO: Add code from here?
+// https://javascript.info/file
 fileItem.addEventListener("change", () => {
   console.log("The thing changed");
   console.log(fileItem.files[0].name);
