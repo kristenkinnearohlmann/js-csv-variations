@@ -3,8 +3,8 @@
 let selectedFile;
 
 document.getElementById("choose-file").addEventListener("change", (event) => {
-  console.log(event);
   selectedFile = document.getElementById("choose-file").files[0];
+  console.log(selectedFile.name);
 });
 
 // const btnSelect = document.getElementById("btnSelect");
