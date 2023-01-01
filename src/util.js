@@ -15,6 +15,8 @@ document.getElementById("choose-file").addEventListener("change", (event) => {
   reader.onerror = () => {
     console.log(reader.error);
   };
+
+  // TODO: Tutorial mentions that fetch natively accepts File objects => check into this
 });
 
 // const btnSelect = document.getElementById("btnSelect");
