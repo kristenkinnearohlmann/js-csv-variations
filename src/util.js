@@ -1,3 +1,12 @@
+// TODO: Add code from here?
+// https://javascript.info/file
+let selectedFile;
+
+document.getElementById("choose-file").addEventListener("change", (event) => {
+  console.log(event);
+  selectedFile = document.getElementById("choose-file").files[0];
+});
+
 // const btnSelect = document.getElementById("btnSelect");
 // const btnInput = document.getElementById("btnInput");
 // const fileItem = document.getElementById("fileItem");
@@ -36,6 +45,3 @@
 // const handleNoFileSelected = () => {
 //   console.log("No file selected");
 // };
-
-// TODO: Add code from here?
-// https://javascript.info/file
