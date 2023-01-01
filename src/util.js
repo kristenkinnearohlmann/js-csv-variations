@@ -1,10 +1,20 @@
 // TODO: Add code from here?
 // https://javascript.info/file
-let selectedFile;
 
 document.getElementById("choose-file").addEventListener("change", (event) => {
+  let selectedFile;
+  let reader = new FileReader();
+
   selectedFile = document.getElementById("choose-file").files[0];
-  console.log(selectedFile.name);
+  reader.readAsText(selectedFile);
+
+  reader.onload = () => {
+    console.log(reader.result);
+  };
+
+  reader.onerror = () => {
+    console.log(reader.error);
+  };
 });
 
 // const btnSelect = document.getElementById("btnSelect");
