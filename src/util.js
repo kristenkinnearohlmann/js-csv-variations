@@ -25,11 +25,14 @@ document.getElementById("input-file").addEventListener("click", (event) => {
 const postData = (fileInput) => {
   // TODO: Tutorial mentions that fetch natively accepts File objects => check into this
   console.log("Reached file input");
-  console.log(selectedFile);
+  console.log(fileInput);
 
   const formData = new FormData();
-  formData.append("title", "My file I uploadd");
-  formData.append("file", selectedFile);
+  formData.append("file", fileInput);
+  // formData.append("env", "Dev");
+
+  // console.log(formData.get("env"));
+  console.log(formData.get("file"));
 
   fetch("http://localhost:5001/file-import/", {
     method: "POST",
