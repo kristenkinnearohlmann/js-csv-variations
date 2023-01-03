@@ -1,8 +1,9 @@
 // TODO: Add code from here?
 // https://javascript.info/file
 
+let selectedFile;
+
 document.getElementById("choose-file").addEventListener("change", (event) => {
-  let selectedFile;
   let reader = new FileReader();
 
   selectedFile = document.getElementById("choose-file").files[0];
@@ -15,9 +16,32 @@ document.getElementById("choose-file").addEventListener("change", (event) => {
   reader.onerror = () => {
     console.log(reader.error);
   };
-
-  // TODO: Tutorial mentions that fetch natively accepts File objects => check into this
 });
+
+document.getElementById("input-file").addEventListener("click", (event) => {
+  postData(selectedFile);
+});
+
+const postData = (fileInput) => {
+  // TODO: Tutorial mentions that fetch natively accepts File objects => check into this
+  console.log("Reached file input");
+  console.log(selectedFile);
+  const data = JSON.stringify({ msg: "Another message" });
+
+  const formData = new FormData();
+  formData.append("title", "My file I uploadd");
+  formData.append("file", selectedFile);
+
+  fetch("http://localhost:5001/file-import/", {
+    method: "POST",
+    mode: "no-cors",
+    // headers: { "Content-Type": "application/json" },
+    // headers: { "Content-Type": "multipart/form-data" },
+    // body: formData,
+    // body: JSON.stringify({ msg: "hello" }),
+    body: formData,
+  });
+};
 
 // const btnSelect = document.getElementById("btnSelect");
 // const btnInput = document.getElementById("btnInput");
