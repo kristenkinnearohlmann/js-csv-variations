@@ -26,7 +26,6 @@ const postData = (fileInput) => {
   // TODO: Tutorial mentions that fetch natively accepts File objects => check into this
   console.log("Reached file input");
   console.log(selectedFile);
-  const data = JSON.stringify({ msg: "Another message" });
 
   const formData = new FormData();
   formData.append("title", "My file I uploadd");
@@ -35,12 +34,9 @@ const postData = (fileInput) => {
   fetch("http://localhost:5001/file-import/", {
     method: "POST",
     mode: "no-cors",
-    // headers: { "Content-Type": "application/json" },
-    // headers: { "Content-Type": "multipart/form-data" },
-    // body: formData,
-    // body: JSON.stringify({ msg: "hello" }),
     body: formData,
   });
+  // TODO: Add handling of resolved/rejected promise
 };
 
 // const btnSelect = document.getElementById("btnSelect");
