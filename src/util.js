@@ -32,14 +32,27 @@ const processInputFile = (fileInput) => {
   reader.onload = () => {
     const result = reader.result;
     const dataArray = result.split("\r\n");
-    const columnHeaders = dataArray.shift().split("|");
+    const columnLabels = dataArray.shift().split("|");
+    const columnHeaders = {};
+    const records = [];
+
+    columnLabels.forEach((label, index) => {
+      columnHeaders[index] = label;
+    });
     console.log(columnHeaders);
     console.log(dataArray.length);
 
     do {
-      let record = dataArray.pop();
-      console.log(record);
+      let record = {};
+      let rawRecord = dataArray.pop();
+
+      rawRecord.split("|").forEach((item, index) => {
+        record[columnLabels[index]] = item;
+      });
+      records.push(record);
     } while (dataArray.length > 0);
+
+    console.log(records);
 
     // const records = dataArray.map((item) => {
     //   const columns = item.split("|");
