@@ -27,17 +27,27 @@ const postData = (fileInput) => {
   console.log("Reached file input");
   console.log(fileInput);
 
-  const formData = new FormData();
-  formData.append("file", fileInput);
+  // const formData = new FormData();
+  // formData.append("file", fileInput);
   // formData.append("env", "Dev");
 
   // console.log(formData.get("env"));
-  console.log(formData.get("file"));
+  // console.log(formData.get("file"));
+
+  const data = {
+    env: "Dev",
+    records: [
+      { name: "Mario", type: "cow" },
+      { name: "Rucola", type: "tabby" },
+    ],
+  };
 
   fetch("http://localhost:5001/file-import/", {
     method: "POST",
     mode: "no-cors",
-    body: formData,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+    // body: formData,
   });
   // TODO: Add handling of resolved/rejected promise
 };
