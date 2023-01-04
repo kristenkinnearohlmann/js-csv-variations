@@ -19,74 +19,27 @@ document.getElementById("choose-file").addEventListener("change", (event) => {
 });
 
 document.getElementById("input-file").addEventListener("click", (event) => {
-  postData(selectedFile);
+  const data = processInputFile(selectedFile);
+  postData(data);
 });
 
-const postData = (fileInput) => {
-  // TODO: Tutorial mentions that fetch natively accepts File objects => check into this
-  console.log("Reached file input");
-  console.log(fileInput);
-
-  // const formData = new FormData();
-  // formData.append("file", fileInput);
-  // formData.append("env", "Dev");
-
-  // console.log(formData.get("env"));
-  // console.log(formData.get("file"));
-
-  const data = {
+const processInputFile = (fileInput) => {
+  console.log("What's the file input", fileInput);
+  return {
     env: "Dev",
     records: [
       { name: "Mario", type: "cow" },
       { name: "Rucola", type: "tabby" },
     ],
   };
+};
 
+const postData = (data) => {
   fetch("http://localhost:5001/file-import/", {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
-    // body: formData,
   });
   // TODO: Add handling of resolved/rejected promise
 };
-
-// const btnSelect = document.getElementById("btnSelect");
-// const btnInput = document.getElementById("btnInput");
-// const fileItem = document.getElementById("fileItem");
-
-// btnSelect.addEventListener(
-//   "click",
-//   (event) => {
-//     if (fileItem) {
-//       fileItem.click();
-//     }
-//   },
-//   false
-// );
-
-// fileItem.addEventListener("change", () => {
-//   console.log("The thing changed");
-//   console.log(fileItem.files[0].name);
-//   document.getElementById("fileNameDisplay").value = fileItem.files[0].name;
-// });
-
-// btnInput.addEventListener("click", (event) => {
-//   const selectedFile = getFileSelection();
-
-//   selectedFile ? handleFileSelected(selectedFile) : handleNoFileSelected();
-// });
-
-// const getFileSelection = () => {
-//   //   return document.getElementById("fileItem").files[0];
-//   return fileItem.files[0];
-// };
-
-// const handleFileSelected = (selectedFile) => {
-//   console.log(selectedFile);
-// };
-
-// const handleNoFileSelected = () => {
-//   console.log("No file selected");
-// };
