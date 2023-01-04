@@ -25,10 +25,11 @@ document.getElementById("input-file").addEventListener("click", (event) => {
 
 const processInputFile = (fileInput) => {
   console.log("What's the file input", fileInput);
-  const data = { env: "", records: [] };
+  let data = { env: "", records: [] };
   const reader = new FileReader();
   reader.readAsText(fileInput);
 
+  // TODO: How to defeat this asynchronous process??
   reader.onload = () => {
     const result = reader.result;
     const dataArray = result.split("\r\n");
@@ -39,27 +40,19 @@ const processInputFile = (fileInput) => {
     columnLabels.forEach((label, index) => {
       columnHeaders[index] = label;
     });
-    console.log(columnHeaders);
-    console.log(dataArray.length);
 
     do {
       let record = {};
       let rawRecord = dataArray.pop();
 
       rawRecord.split("|").forEach((item, index) => {
-        record[columnLabels[index]] = item;
+        record[columnLabels[index]] = item === "[NULL]" ? "" : item;
       });
       records.push(record);
     } while (dataArray.length > 0);
 
     console.log(records);
-
-    // const records = dataArray.map((item) => {
-    //   const columns = item.split("|");
-    //   const dataRecord = columns.map((item, index) => {
-    //     // TODO: Finish creating record object
-    //   });
-    // });
+    data = { ...columnHeaders, records: records };
   };
 
   console.log(data);
