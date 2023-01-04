@@ -20,7 +20,7 @@ document.getElementById("choose-file").addEventListener("change", (event) => {
 
 document.getElementById("input-file").addEventListener("click", (event) => {
   const data = processInputFile(selectedFile);
-  postData(data);
+  // postData(data);
 });
 
 const processInputFile = (fileInput) => {
@@ -34,13 +34,19 @@ const processInputFile = (fileInput) => {
     const dataArray = result.split("\r\n");
     const columnHeaders = dataArray.shift().split("|");
     console.log(columnHeaders);
-    console.log(dataArray);
-    const records = dataArray.map((item) => {
-      const columns = item.split("|");
-      const dataRecord = columns.map((item, index) => {
-        // TODO: Finish creating record object
-      });
-    });
+    console.log(dataArray.length);
+
+    do {
+      let record = dataArray.pop();
+      console.log(record);
+    } while (dataArray.length > 0);
+
+    // const records = dataArray.map((item) => {
+    //   const columns = item.split("|");
+    //   const dataRecord = columns.map((item, index) => {
+    //     // TODO: Finish creating record object
+    //   });
+    // });
   };
 
   console.log(data);
