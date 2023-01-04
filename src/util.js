@@ -25,6 +25,26 @@ document.getElementById("input-file").addEventListener("click", (event) => {
 
 const processInputFile = (fileInput) => {
   console.log("What's the file input", fileInput);
+  const data = { env: "", records: [] };
+  const reader = new FileReader();
+  reader.readAsText(fileInput);
+
+  reader.onload = () => {
+    const result = reader.result;
+    const dataArray = result.split("\r\n");
+    const columnHeaders = dataArray.shift().split("|");
+    console.log(columnHeaders);
+    console.log(dataArray);
+    const records = dataArray.map((item) => {
+      const columns = item.split("|");
+      const dataRecord = columns.map((item, index) => {
+        // TODO: Finish creating record object
+      });
+    });
+  };
+
+  console.log(data);
+
   return {
     env: "Dev",
     records: [
