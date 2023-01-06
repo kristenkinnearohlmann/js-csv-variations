@@ -1,8 +1,9 @@
 // Source example: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result
 const fileInput = document.getElementById("choose-file");
+const fileImport = document.getElementById("input-file");
+let apiRequestBody;
 
 const readFileInput = (callback) => {
-  console.log("Reached readFileInput");
   const file = fileInput.files.item(0);
   const reader = new FileReader();
 
@@ -14,9 +15,11 @@ const readFileInput = (callback) => {
 };
 
 const handleFileInput = (result) => {
-  console.log("Reached handleFileInput");
   const request = processFileInput(result);
   console.log(request);
+  apiRequestBody = request;
+  console.log("check", apiRequestBody);
+  if (apiRequestBody) fileImport.disabled = false;
 };
 
 const processFileInput = (result) => {
@@ -28,9 +31,10 @@ const processFileInput = (result) => {
 };
 
 fileInput.addEventListener("change", (event) => {
-  console.log("Reached change event for file input");
   readFileInput(handleFileInput);
 });
+
+fileImport.addEventListener("click", (event) => {});
 
 // TODO: Add code from here?
 // https://javascript.info/file
