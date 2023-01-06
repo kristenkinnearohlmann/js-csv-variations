@@ -30,6 +30,7 @@ const processInputFile = (fileInput) => {
   reader.readAsText(fileInput);
 
   // TODO: How to defeat this asynchronous process??
+  // Potential? https://developer.mozilla.org/en-US/docs/Web/API/FileReader
   reader.onload = () => {
     const result = reader.result;
     const dataArray = result.split("\r\n");
