@@ -18,7 +18,6 @@ const handleFileInput = (result) => {
   const request = processFileInput(result);
   console.log(request);
   apiRequestBody = request;
-  console.log("check", apiRequestBody);
   if (apiRequestBody.env !== "" && apiRequestBody.records.length > 0)
     fileImport.disabled = false;
 };
@@ -27,8 +26,31 @@ const processFileInput = (result) => {
   console.log("Reached processFileInput");
   console.log(result);
   const env = "Dev";
-  let data = { env: "", records: [] };
-  return data;
+  let responseBody = { env: env, records: [] };
+
+  const dataArray = result.split("\r\n");
+  const columnLabels = dataArray.shift().split("|");
+  const columnHeaders = {};
+  const records = [];
+
+  columnLabels.forEach((label, index) => {
+    columnHeaders[index] = label;
+  });
+
+  do {
+    let record = {};
+    let rawRecord = dataArray.pop();
+
+    rawRecord.split("|").forEach((item, index) => {
+      record[columnLabels[index]] = item === "[NULL]" ? "" : item;
+    });
+    records.push(record);
+  } while (dataArray.length > 0);
+
+  console.log(records);
+  data = { ...columnHeaders, records: records };
+  console.log(data);
+  return responseBody;
 };
 
 fileInput.addEventListener("change", (event) => {
