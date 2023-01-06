@@ -15,7 +15,16 @@ const readFileInput = (callback) => {
 
 const handleFileInput = (result) => {
   console.log("Reached handleFileInput");
+  const request = processFileInput(result);
+  console.log(request);
+};
+
+const processFileInput = (result) => {
+  console.log("Reached processFileInput");
   console.log(result);
+  const env = "Dev";
+  let data = { env: "", records: [] };
+  return data;
 };
 
 fileInput.addEventListener("change", (event) => {
