@@ -1,3 +1,4 @@
+// Source example: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result
 const fileInput = document.getElementById("choose-file");
 
 const readFileInput = (callback) => {
