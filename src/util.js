@@ -19,7 +19,8 @@ const handleFileInput = (result) => {
   console.log(request);
   apiRequestBody = request;
   console.log("check", apiRequestBody);
-  if (apiRequestBody) fileImport.disabled = false;
+  if (apiRequestBody.env !== "" && apiRequestBody.records.length > 0)
+    fileImport.disabled = false;
 };
 
 const processFileInput = (result) => {
