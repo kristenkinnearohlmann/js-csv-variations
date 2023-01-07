@@ -47,10 +47,7 @@ const processFileInput = (result) => {
     records.push(record);
   } while (dataArray.length > 0);
 
-  console.log(records);
-  // data = { ...columnHeaders, records: records };
   responseBody = { ...responseBody, records: records };
-  console.log(responseBody);
   return responseBody;
 };
 
