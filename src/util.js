@@ -53,7 +53,9 @@ fileInput.addEventListener("change", (event) => {
   readFileInput(handleFileInput);
 });
 
-fileImport.addEventListener("click", (event) => {});
+fileImport.addEventListener("click", (event) => {
+  console.log(apiRequestBody);
+});
 
 // TODO: Add code from here?
 // https://javascript.info/file
