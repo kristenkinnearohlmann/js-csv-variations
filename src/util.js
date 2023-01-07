@@ -55,6 +55,16 @@ fileInput.addEventListener("change", (event) => {
 
 fileImport.addEventListener("click", (event) => {
   console.log(apiRequestBody);
+  const data = {
+    msg: "Data to import",
+    ...apiRequestBody,
+  };
+  fetch("http://localhost:5001/file-import/", {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 });
 
 // TODO: Add code from here?
