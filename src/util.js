@@ -16,15 +16,13 @@ const readFileInput = (callback) => {
 
 const handleFileInput = (result) => {
   const request = processFileInput(result);
-  console.log(request);
+  // TODO: Add validity check
   apiRequestBody = request;
   if (apiRequestBody.env !== "" && apiRequestBody.records.length > 0)
     fileImport.disabled = false;
 };
 
 const processFileInput = (result) => {
-  console.log("Reached processFileInput");
-  console.log(result);
   const env = "Dev";
   let responseBody = { env: env, records: [] };
 
