@@ -53,28 +53,19 @@ fileInput.addEventListener("change", (event) => {
   readFileInput(handleFileInput);
 });
 
-fileImport.addEventListener("click", (event) => {
-  const data = {
+fileImport.addEventListener("click", async (event) => {
+  const request = {
     msg: "Data to import",
     ...apiRequestBody,
   };
 
-  fetch("http://localhost:5001/file-import/", {
+  const response = await fetch("http://localhost:5001/file-import/", {
     method: "POST",
-    // mode: "no-cors",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      console.log(response);
-      response.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
-  // .then((data) => {
-  //   console.log(data);
-  // });
+    body: JSON.stringify(request),
+  });
+  const data = await response.json();
+  console.log(data);
 });
 
 // TODO: Add code from here?
