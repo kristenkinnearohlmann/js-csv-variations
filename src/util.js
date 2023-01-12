@@ -17,6 +17,7 @@ const readFileInput = (callback) => {
 const handleFileInput = (result) => {
   const request = processFileInput(result);
   // TODO: Add validity check
+  // TODO: Ensure all lines have the same number of elements, based on header
   apiRequestBody = request;
   if (apiRequestBody.env !== "" && apiRequestBody.records.length > 0)
     fileImport.disabled = false;
