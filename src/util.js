@@ -19,6 +19,7 @@ const handleFileInput = (result) => {
   // TODO: Add validity check
   // TODO: Ensure all lines have the same number of elements, based on header
   // TODO: Can this be split out?
+  // TODO: Or can this be driven full off import button click?
   apiRequestBody = request;
   if (apiRequestBody.env !== "" && apiRequestBody.records.length > 0)
     fileImport.disabled = false;
