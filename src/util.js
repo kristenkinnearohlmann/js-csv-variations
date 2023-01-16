@@ -29,7 +29,7 @@ const processFileInput = (result) => {
   let responseBody = { env: env, records: [] };
   // TODO: Add validity check
 
-  const dataArray = result.split("\r\n");
+  const dataArray = result.split("|\r\n");
   const columnLabels = dataArray.shift().split("|");
   const columnHeaders = {};
   const records = [];
