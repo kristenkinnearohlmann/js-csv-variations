@@ -16,7 +16,6 @@ const readFileInput = (callback) => {
 
 const handleFileInput = (result) => {
   const request = processFileInput(result);
-  // TODO: Add validity check
   // TODO: Ensure all lines have the same number of elements, based on header
   // TODO: Can this be split out?
   // TODO: Or can this be driven full off import button click?
@@ -28,6 +27,7 @@ const handleFileInput = (result) => {
 const processFileInput = (result) => {
   const env = "Dev";
   let responseBody = { env: env, records: [] };
+  // TODO: Add validity check
 
   const dataArray = result.split("\r\n");
   const columnLabels = dataArray.shift().split("|");
