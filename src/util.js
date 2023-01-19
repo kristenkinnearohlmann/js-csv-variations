@@ -29,6 +29,8 @@ const processFileInput = (result) => {
   let responseBody = { env: env, records: [] };
   // TODO: Add validity check
   // TODO: Map to check that all have same pipe count
+  // TODO: Check required fields
+  // TODO: Check no empty string values (length)
   const dataArray = result.slice(0, -1).split("|\r\n");
   const columnLabels = dataArray.shift().split("|");
   const columnHeaders = {};
