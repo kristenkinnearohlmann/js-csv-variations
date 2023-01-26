@@ -43,7 +43,7 @@ const processFileInput = (result) => {
   do {
     let record = {};
     let rawRecord = dataArray.pop();
-
+    // TODO: Account for various line-ending differences
     rawRecord.split("|").forEach((item, index) => {
       record[columnLabels[index]] = item === "[NULL]" ? "" : item;
     });
